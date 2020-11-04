@@ -12,6 +12,7 @@ protocol MainFeedItemProtocol {
     var commentsValue : String? { get }
     var authorValue : String? { get }
     var thumbnailValue : String? { get }
+    var fullImageValue : String? { get }
 }
 
 class MainFeedCell: UITableViewCell {

@@ -42,15 +42,18 @@ class RedditFeedItem: NSObject, Decodable {
     let title : String
     var thumbnail : String?
     var reviews : [UserReview]?
+    var imageUrl : String?
     
     class JsonData : Decodable {
         let title: String
         let author : String
         var thumbnail : String?
-        var reviews : [UserReview]
+        var url : String?
+        var reviews : [UserReview]?
         enum CodingKeys: String, CodingKey {
             case title
             case thumbnail
+            case url
             case author = "author_fullname"
             case reviews = "all_awardings"
         }
@@ -60,7 +63,8 @@ class RedditFeedItem: NSObject, Decodable {
             title = try container.decode(String.self, forKey: .title)
             author = try container.decode(String.self, forKey: .author)
             thumbnail = try container.decodeIfPresent(String.self, forKey: .thumbnail)
-            reviews = try container.decode([UserReview].self, forKey: .reviews)
+            url = try container.decodeIfPresent(String.self, forKey: .url)
+            reviews = try container.decodeIfPresent([UserReview].self, forKey: .reviews)
         }
     }
     
@@ -76,6 +80,7 @@ class RedditFeedItem: NSObject, Decodable {
         author = data.author
         reviews = data.reviews
         thumbnail = data.thumbnail
+        imageUrl = data.url
     }
 }
 
@@ -96,5 +101,9 @@ extension RedditFeedItem : MainFeedItemProtocol {
     
     var thumbnailValue: String? {
         return thumbnail
+    }
+    
+    var fullImageValue: String? {
+        return imageUrl
     }
 }

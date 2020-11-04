@@ -82,7 +82,7 @@ class MainFeedVC: UITableViewController {
         
         if let cell = cell as? MainFeedCell {
             cell.configure(with: items[indexPath.row]) {[weak self] (item) in
-                if let path = item.thumbnailValue {
+                if let path = item.fullImageValue {
                     let vc = ImageViewerVC(nibName: "ImageViewerVC", bundle: nil)
                     vc.imagePath = path
                     self?.navigationController?.pushViewController(vc, animated: true)
