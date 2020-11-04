@@ -16,7 +16,6 @@
 		0C820169255313D7006CF373 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C820168255313D7006CF373 /* Photos.framework */; };
 		0C82016E255319D4006CF373 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C82016D255319D4006CF373 /* URL+Extensions.swift */; };
 		0C8E3B722551B06B00091EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E3B712551B06B00091EC7 /* AppDelegate.swift */; };
-		0C8E3B762551B06B00091EC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E3B752551B06B00091EC7 /* ViewController.swift */; };
 		0C8E3B792551B06B00091EC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8E3B772551B06B00091EC7 /* Main.storyboard */; };
 		0C8E3B7B2551B06C00091EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C8E3B7A2551B06C00091EC7 /* Assets.xcassets */; };
 		0C8E3B7E2551B06C00091EC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8E3B7C2551B06C00091EC7 /* LaunchScreen.storyboard */; };
@@ -38,7 +37,6 @@
 		0C82016D255319D4006CF373 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		0C8E3B6E2551B06B00091EC7 /* RTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C8E3B712551B06B00091EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0C8E3B752551B06B00091EC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0C8E3B782551B06B00091EC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0C8E3B7A2551B06C00091EC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C8E3B7D2551B06C00091EC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 				0C82014F2552D594006CF373 /* Controllers */,
 				0C8E3B892551B87200091EC7 /* Library */,
 				0C8E3B712551B06B00091EC7 /* AppDelegate.swift */,
-				0C8E3B752551B06B00091EC7 /* ViewController.swift */,
 				0C8E3B772551B06B00091EC7 /* Main.storyboard */,
 				0C8E3B7A2551B06C00091EC7 /* Assets.xcassets */,
 				0C8E3B7C2551B06C00091EC7 /* LaunchScreen.storyboard */,
@@ -276,7 +273,6 @@
 				0C82016E255319D4006CF373 /* URL+Extensions.swift in Sources */,
 				30BE8AC5255203B200767235 /* RedditFeedItem.swift in Sources */,
 				0C8201582552D6EF006CF373 /* MainFeedCell.swift in Sources */,
-				0C8E3B762551B06B00091EC7 /* ViewController.swift in Sources */,
 				0C8E3B722551B06B00091EC7 /* AppDelegate.swift in Sources */,
 				0C82016325530DD0006CF373 /* ImageViewerVC.swift in Sources */,
 				0C8E3B902551BF6B00091EC7 /* ClientApiService.swift in Sources */,

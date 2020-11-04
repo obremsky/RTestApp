@@ -14,8 +14,7 @@ class ImageViewerVC: UIViewController {
     var thumbService : DownloadImageService?
     
     private lazy var activityView: UIActivityIndicatorView = {
-        let actity =  UIActivityIndicatorView(style: .medium)
-        actity.center = view.center
+        let actity =  UIActivityIndicatorView(style: .large)
         self.view.addSubview(actity)
         return actity
     }()
@@ -32,6 +31,11 @@ class ImageViewerVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadImage()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        activityView.center = view.center
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,8 +55,12 @@ class ImageViewerVC: UIViewController {
             case .success(let image):
                 self?.imageView.image = image
                 self?.imageView.isUserInteractionEnabled = true
-            default:
-                break
+            case .failure(let error):
+                
+                
+                let alert = UIAlertController(title: "Error", message: "Something went wrong :(. Error: \(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
             }
         }
         service.start()

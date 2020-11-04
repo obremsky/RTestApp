@@ -24,8 +24,7 @@ class MainFeedVC: UITableViewController {
     }()
     
     private lazy var activityView: UIActivityIndicatorView = {
-        let actity =  UIActivityIndicatorView(style: .medium)
-        actity.center = view.center
+        let actity =  UIActivityIndicatorView(style: .large)
         self.view.addSubview(actity)
         return actity
     }()
@@ -43,6 +42,11 @@ class MainFeedVC: UITableViewController {
         super.viewDidDisappear(animated)
         feedService?.cancel()
         activityView.stopAnimating()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.activityView.center = view.center
     }
     
     @objc private func refreshData() {
