@@ -67,17 +67,19 @@ class ClientApiService : NSObject {
     private func downloadFile(_ request: URLRequest, config: NetworkManager.Configuration = .basic) -> URLSessionTask {
         let task = NetworkManager.shared.session(with: config).downloadTask(with: request) { (url, response, error) in
             
-            if let error = error {
-                self._taskCompletion?(Result.failure(error))
-                return
-            }
-            
-            if let url = url {
-                do {
-                    let data = try Data(contentsOf: url)
-                    self._taskCompletion?(Result.success(data))
-                }catch {
+            DispatchQueue.main.async {
+                if let error = error {
                     self._taskCompletion?(Result.failure(error))
+                    return
+                }
+                
+                if let url = url {
+                    do {
+                        let data = try Data(contentsOf: url)
+                        self._taskCompletion?(Result.success(data))
+                    }catch {
+                        self._taskCompletion?(Result.failure(error))
+                    }
                 }
             }
         }

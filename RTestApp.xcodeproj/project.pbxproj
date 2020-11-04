@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C8201532552D607006CF373 /* MainFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8201522552D607006CF373 /* MainFeedVC.swift */; };
+		0C8201582552D6EF006CF373 /* MainFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8201562552D6EF006CF373 /* MainFeedCell.swift */; };
+		0C8201592552D6EF006CF373 /* MainFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8201572552D6EF006CF373 /* MainFeedCell.xib */; };
+		0C82015E2552FC4A006CF373 /* DownloadImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C82015D2552FC4A006CF373 /* DownloadImageService.swift */; };
 		0C8E3B722551B06B00091EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E3B712551B06B00091EC7 /* AppDelegate.swift */; };
 		0C8E3B762551B06B00091EC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E3B752551B06B00091EC7 /* ViewController.swift */; };
 		0C8E3B792551B06B00091EC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8E3B772551B06B00091EC7 /* Main.storyboard */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C8201522552D607006CF373 /* MainFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedVC.swift; sourceTree = "<group>"; };
+		0C8201562552D6EF006CF373 /* MainFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedCell.swift; sourceTree = "<group>"; };
+		0C8201572552D6EF006CF373 /* MainFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFeedCell.xib; sourceTree = "<group>"; };
+		0C82015D2552FC4A006CF373 /* DownloadImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageService.swift; sourceTree = "<group>"; };
 		0C8E3B6E2551B06B00091EC7 /* RTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C8E3B712551B06B00091EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C8E3B752551B06B00091EC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +53,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C82014F2552D594006CF373 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0C8201502552D5C8006CF373 /* Main feed */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0C8201502552D5C8006CF373 /* Main feed */ = {
+			isa = PBXGroup;
+			children = (
+				0C8201552552D6D3006CF373 /* View */,
+				0C8201512552D5E0006CF373 /* Controller */,
+			);
+			path = "Main feed";
+			sourceTree = "<group>";
+		};
+		0C8201512552D5E0006CF373 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C8201522552D607006CF373 /* MainFeedVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C8201552552D6D3006CF373 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C8201562552D6EF006CF373 /* MainFeedCell.swift */,
+				0C8201572552D6EF006CF373 /* MainFeedCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C82015C2552FC12006CF373 /* Shared services */ = {
+			isa = PBXGroup;
+			children = (
+				0C82015D2552FC4A006CF373 /* DownloadImageService.swift */,
+			);
+			path = "Shared services";
+			sourceTree = "<group>";
+		};
 		0C8E3B652551B06B00091EC7 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +114,7 @@
 		0C8E3B702551B06B00091EC7 /* RTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				0C82014F2552D594006CF373 /* Controllers */,
 				0C8E3B892551B87200091EC7 /* Library */,
 				0C8E3B712551B06B00091EC7 /* AppDelegate.swift */,
 				0C8E3B752551B06B00091EC7 /* ViewController.swift */,
@@ -87,6 +138,7 @@
 		0C8E3B8A2551B9BA00091EC7 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				0C82015C2552FC12006CF373 /* Shared services */,
 				30BE8AC12551FFC200767235 /* Services */,
 				0C8E3B8C2551BB0500091EC7 /* NetworkManager.swift */,
 				0C8E3B8F2551BF6B00091EC7 /* ClientApiService.swift */,
@@ -170,6 +222,7 @@
 			files = (
 				0C8E3B7E2551B06C00091EC7 /* LaunchScreen.storyboard in Resources */,
 				0C8E3B7B2551B06C00091EC7 /* Assets.xcassets in Resources */,
+				0C8201592552D6EF006CF373 /* MainFeedCell.xib in Resources */,
 				0C8E3B792551B06B00091EC7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,9 +236,12 @@
 			files = (
 				0C8E3B8D2551BB0500091EC7 /* NetworkManager.swift in Sources */,
 				30BE8AC5255203B200767235 /* RedditFeedItem.swift in Sources */,
+				0C8201582552D6EF006CF373 /* MainFeedCell.swift in Sources */,
 				0C8E3B762551B06B00091EC7 /* ViewController.swift in Sources */,
 				0C8E3B722551B06B00091EC7 /* AppDelegate.swift in Sources */,
 				0C8E3B902551BF6B00091EC7 /* ClientApiService.swift in Sources */,
+				0C8201532552D607006CF373 /* MainFeedVC.swift in Sources */,
+				0C82015E2552FC4A006CF373 /* DownloadImageService.swift in Sources */,
 				0C8E3BB32551C09800091EC7 /* Environment.swift in Sources */,
 				30BE8AC32552024C00767235 /* RedditFeedService.swift in Sources */,
 			);

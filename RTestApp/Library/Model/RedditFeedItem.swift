@@ -78,3 +78,23 @@ class RedditFeedItem: NSObject, Decodable {
         thumbnail = data.thumbnail
     }
 }
+
+
+extension RedditFeedItem : MainFeedItemProtocol {
+    
+    var titleValue: String? {
+        return title
+    }
+    
+    var authorValue: String? {
+        return "Posted by \(author)"
+    }
+    
+    var commentsValue: String? {
+        return "\(reviews?.count ?? 0) comments"
+    }
+    
+    var thumbnailValue: String? {
+        return thumbnail
+    }
+}
