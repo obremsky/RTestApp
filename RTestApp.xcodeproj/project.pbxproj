@@ -11,6 +11,9 @@
 		0C8201582552D6EF006CF373 /* MainFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8201562552D6EF006CF373 /* MainFeedCell.swift */; };
 		0C8201592552D6EF006CF373 /* MainFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8201572552D6EF006CF373 /* MainFeedCell.xib */; };
 		0C82015E2552FC4A006CF373 /* DownloadImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C82015D2552FC4A006CF373 /* DownloadImageService.swift */; };
+		0C82016325530DD0006CF373 /* ImageViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C82016125530DD0006CF373 /* ImageViewerVC.swift */; };
+		0C82016425530DD0006CF373 /* ImageViewerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C82016225530DD0006CF373 /* ImageViewerVC.xib */; };
+		0C820169255313D7006CF373 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C820168255313D7006CF373 /* Photos.framework */; };
 		0C8E3B722551B06B00091EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E3B712551B06B00091EC7 /* AppDelegate.swift */; };
 		0C8E3B762551B06B00091EC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E3B752551B06B00091EC7 /* ViewController.swift */; };
 		0C8E3B792551B06B00091EC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C8E3B772551B06B00091EC7 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 		0C8201562552D6EF006CF373 /* MainFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedCell.swift; sourceTree = "<group>"; };
 		0C8201572552D6EF006CF373 /* MainFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFeedCell.xib; sourceTree = "<group>"; };
 		0C82015D2552FC4A006CF373 /* DownloadImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageService.swift; sourceTree = "<group>"; };
+		0C82016125530DD0006CF373 /* ImageViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerVC.swift; sourceTree = "<group>"; };
+		0C82016225530DD0006CF373 /* ImageViewerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewerVC.xib; sourceTree = "<group>"; };
+		0C820168255313D7006CF373 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		0C8E3B6E2551B06B00091EC7 /* RTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C8E3B712551B06B00091EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C8E3B752551B06B00091EC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C820169255313D7006CF373 /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,11 +102,29 @@
 			path = "Shared services";
 			sourceTree = "<group>";
 		};
+		0C82016025530DAF006CF373 /* Reuse */ = {
+			isa = PBXGroup;
+			children = (
+				0C82016125530DD0006CF373 /* ImageViewerVC.swift */,
+				0C82016225530DD0006CF373 /* ImageViewerVC.xib */,
+			);
+			path = Reuse;
+			sourceTree = "<group>";
+		};
+		0C820167255313D7006CF373 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C820168255313D7006CF373 /* Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0C8E3B652551B06B00091EC7 = {
 			isa = PBXGroup;
 			children = (
 				0C8E3B702551B06B00091EC7 /* RTestApp */,
 				0C8E3B6F2551B06B00091EC7 /* Products */,
+				0C820167255313D7006CF373 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +154,7 @@
 		0C8E3B892551B87200091EC7 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				0C82016025530DAF006CF373 /* Reuse */,
 				0C8E3B8B2551B9D200091EC7 /* Model */,
 				0C8E3B8A2551B9BA00091EC7 /* API */,
 			);
@@ -220,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C82016425530DD0006CF373 /* ImageViewerVC.xib in Resources */,
 				0C8E3B7E2551B06C00091EC7 /* LaunchScreen.storyboard in Resources */,
 				0C8E3B7B2551B06C00091EC7 /* Assets.xcassets in Resources */,
 				0C8201592552D6EF006CF373 /* MainFeedCell.xib in Resources */,
@@ -239,6 +266,7 @@
 				0C8201582552D6EF006CF373 /* MainFeedCell.swift in Sources */,
 				0C8E3B762551B06B00091EC7 /* ViewController.swift in Sources */,
 				0C8E3B722551B06B00091EC7 /* AppDelegate.swift in Sources */,
+				0C82016325530DD0006CF373 /* ImageViewerVC.swift in Sources */,
 				0C8E3B902551BF6B00091EC7 /* ClientApiService.swift in Sources */,
 				0C8201532552D607006CF373 /* MainFeedVC.swift in Sources */,
 				0C82015E2552FC4A006CF373 /* DownloadImageService.swift in Sources */,

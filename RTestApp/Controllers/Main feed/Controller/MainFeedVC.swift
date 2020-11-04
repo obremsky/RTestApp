@@ -35,10 +35,7 @@ class MainFeedVC: UITableViewController {
         tableView.register(UINib(nibName: "MainFeedCell", bundle: nil), forCellReuseIdentifier: "FeedItemCell")
         tableView.tableFooterView = UIView()
         tableView.addSubview(self.refreshControll)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        
         refresh()
     }
     
@@ -84,9 +81,11 @@ class MainFeedVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedItemCell", for: indexPath)
         
         if let cell = cell as? MainFeedCell {
-            cell.configure(with: items[indexPath.row]) { (item) in
-                if let path = item.thumbnailValue, let url = URL(string: path) {
-                    print(url)
+            cell.configure(with: items[indexPath.row]) {[weak self] (item) in
+                if let path = item.thumbnailValue {
+                    let vc = ImageViewerVC(nibName: "ImageViewerVC", bundle: nil)
+                    vc.imagePath = path
+                    self?.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         }
