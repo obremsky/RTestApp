@@ -9,6 +9,7 @@ import Foundation
 
 enum ClientApiServiceError : Error {
     case cantParseFile
+    case invalidUrl
 }
 
 class ClientApiService : NSObject {
@@ -28,7 +29,12 @@ class ClientApiService : NSObject {
                         completion: ((Result<Data, Error>)->())?) {
         
         let urlString = useFullPath ? path : self.baseUrl + path
-        var request = URLRequest(url: URL(string : urlString)!)
+        
+        guard let url = URL(string: urlString), url.isValid  else {
+            _taskCompletion?(.failure(ClientApiServiceError.invalidUrl))
+            return
+        }
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         self._taskCompletion = completion
         self.task = createTaskWithRequest(request)
@@ -39,7 +45,12 @@ class ClientApiService : NSObject {
                         completion: ((Result<Data, Error>)->())?) {
         
         let urlString = useApiDomain ? self.baseUrl + path : path
-        let request = URLRequest(url: URL(string : urlString)!)
+        
+        guard let url = URL(string: urlString), url.isValid  else {
+            _taskCompletion?(.failure(ClientApiServiceError.invalidUrl))
+            return
+        }
+        let request = URLRequest(url: url)
         self._taskCompletion = completion
         self.task = downloadFile(request, config: .basic)
     }
