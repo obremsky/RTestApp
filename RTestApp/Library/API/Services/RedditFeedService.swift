@@ -8,17 +8,28 @@
 import UIKit
 
 class RedditFeedService: ClientApiService {
-
+    
+    let count : Int
+    private var last: RedditFeedItem?
     var completion : ((Result<[RedditFeedItem], Error>)->())?
     
-    init (completion : ((Result<[RedditFeedItem], Error>)->())?) {
+    init (count: Int, before : RedditFeedItem? = nil, completion : ((Result<[RedditFeedItem], Error>)->())?) {
         self.completion = completion
+        self.count = count
         super.init()
     }
     
     override func start() {
-                
-        downloadFile(at: "top.json", useApiDomain: true) { [weak self] (result) in
+       loadNext()
+    }
+    
+    private func loadNext() {
+        var url = "top.json?count=\(count)"
+        if let last = last {
+            url += "&before=\(last.name)"
+        }
+        
+        sendGETRequest(at: "top.json?limit=50") {[weak self] (result) in
             switch result {
             case .success(let data):
                 do {

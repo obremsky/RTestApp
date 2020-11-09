@@ -38,6 +38,7 @@ class RedditFeedItem: NSObject, Decodable {
     
     class UserReview : NSObject, Decodable {}
     
+    let name : String
     let author : String
     let title : String
     var thumbnail : String?
@@ -45,12 +46,14 @@ class RedditFeedItem: NSObject, Decodable {
     var imageUrl : String?
     
     class JsonData : Decodable {
+        let name : String
         let title: String
         let author : String
         var thumbnail : String?
         var url : String?
         var reviews : [UserReview]?
         enum CodingKeys: String, CodingKey {
+            case name
             case title
             case thumbnail
             case url
@@ -60,6 +63,7 @@ class RedditFeedItem: NSObject, Decodable {
 
         required init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
+            name = try container.decode(String.self, forKey: .name)
             title = try container.decode(String.self, forKey: .title)
             author = try container.decode(String.self, forKey: .author)
             thumbnail = try container.decodeIfPresent(String.self, forKey: .thumbnail)
@@ -75,7 +79,7 @@ class RedditFeedItem: NSObject, Decodable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let data = try container.decode(JsonData.self, forKey: .name)
-        
+        name = data.name
         title = data.title
         author = data.author
         reviews = data.reviews

@@ -21,6 +21,7 @@ class ClientApiService : NSObject {
     
     func cancel() {
         self.task?.cancel()
+        _taskCompletion = nil
     }
     
      func sendGETRequest(at path: String,
@@ -62,13 +63,15 @@ class ClientApiService : NSObject {
     
     private func createTaskWithRequest(_ request: URLRequest, config: NetworkManager.Configuration = .basic) -> URLSessionTask {
         let task = NetworkManager.shared.session(with: config).dataTask(with: request) { (data, _, error) in
-            if let error = error {
-                self._taskCompletion?(Result.failure(error))
-                return
-            }
-            
-            if let data = data {
-                self._taskCompletion?(Result.success(data))
+            DispatchQueue.main.async {
+                if let error = error {
+                    self._taskCompletion?(Result.failure(error))
+                    return
+                }
+                
+                if let data = data {
+                    self._taskCompletion?(Result.success(data))
+                }
             }
         }
         task.resume()

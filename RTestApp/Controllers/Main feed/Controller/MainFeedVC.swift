@@ -9,13 +9,14 @@ import UIKit
 
 class MainFeedVC: UITableViewController {
     
-    private var items = [RedditFeedItem]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    private var items = [RedditFeedItem]()
     
     var feedService: RedditFeedService?
+    
+    private var isLoading: Bool = false
+    private var canLoadMore: Bool = true
+    private var pageSize: Int = 50
+    private var visibleCellsCount = 0
     
     private lazy var refreshControll: UIRefreshControl = {
         let result = UIRefreshControl()
@@ -34,8 +35,7 @@ class MainFeedVC: UITableViewController {
         tableView.register(UINib(nibName: "MainFeedCell", bundle: nil), forCellReuseIdentifier: "FeedItemCell")
         tableView.tableFooterView = UIView()
         tableView.addSubview(self.refreshControll)
-        
-        refresh()
+        refresh(fromStart: true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -51,25 +51,65 @@ class MainFeedVC: UITableViewController {
     
     @objc private func refreshData() {
         refreshControll.endRefreshing()
-        refresh()
+        refresh(fromStart: true)
     }
     
-    private func refresh() {
+    private func refresh(fromStart : Bool) {
         
-        if !activityView.isAnimating  { activityView.startAnimating() }
-        feedService?.cancel()
-        feedService = RedditFeedService (completion: {[weak self] (result) in
-            self?.activityView.stopAnimating()
+        if fromStart {
+            canLoadMore = true
+            feedService?.cancel()
+        } else {
+            if isLoading { return }
+        }
+        
+        isLoading = true
+        if !activityView.isAnimating && fromStart { activityView.startAnimating() }
+        
+        feedService = RedditFeedService (count: pageSize, before: items.last ,completion: {[weak self] (result) in
+            
+            guard let self = self else { return }
+            if self.activityView.isAnimating { self.activityView.stopAnimating() }
             
             switch result {
             case .success(let items):
-                self?.items = items
+                if fromStart {
+                    self.items = items
+                    self.tableView.reloadData()
+                    self.visibleCellsCount = self.tableView.indexPathsForVisibleRows?.count ?? 0
+                    
+                } else {
+                    guard items.count > 0 else {
+                        self.isLoading = false
+                        self.canLoadMore = false
+                        return
+                    }
+                    
+                    let startRow = self.items.count
+                    
+                    var indexPathes = [IndexPath]()
+                    for i in startRow..<items.count+startRow {
+                        indexPathes.append(IndexPath(item: i, section: 0))
+                    }
+                    
+                    self.items.append(contentsOf: items)
+                    if items.count < self.pageSize {
+                        self.canLoadMore = false
+                    }
+                    
+                    self.tableView.beginUpdates()
+                        self.tableView.insertRows(at: indexPathes, with: .bottom)
+                    self.tableView.endUpdates()
+                }
             case .failure(let error):
                 print(error)
             }
+            
+            self.isLoading = false
         })
         feedService?.start()
     }
+    
     
     // MARK: - Table view data source
     
@@ -95,5 +135,13 @@ class MainFeedVC: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        guard !isLoading && canLoadMore else { return }
+        if indexPath.row == items.count - visibleCellsCount * 2 {
+            refresh(fromStart: false)
+        }
     }
 }
